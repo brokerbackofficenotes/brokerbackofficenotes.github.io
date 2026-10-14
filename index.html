@@ -112,14 +112,12 @@ footer a{color:#fff}
     <p class="lead">I'm building a small kit of templates and AI-assisted workflows for carrier vetting records, document chasing and other back-office paperwork. <strong>It is not built yet.</strong> Joining the waitlist means I'll email you when there's something to try, and your answers below shape what gets built first.</p>
 
     <div class="card" style="max-width:640px">
-      <!--
-        FORM BACKEND NOT CHOSEN YET.
-        Replace FORM_ENDPOINT_URL below with your form service's endpoint,
-        e.g. Formspree: https://formspree.io/f/YOUR_FORM_ID
-        (or, on Netlify, add the attribute data-netlify="true" to this <form> tag).
-        See README.md for details. Until then, submitting this form will not work.
-      -->
-      <form name="waitlist" action="mailto:brokerbackoffice@mail.grokbot.com?subject=Waitlist%20signup" method="POST" enctype="text/plain">
+      <!-- FormSubmit endpoint (hash hides email). Activation email already sent to brokerbackoffice@mail.grokbot.com. -->
+      <form name="waitlist" action="https://formsubmit.co/222ccbf23bfdefa6968542a0778ee558" method="POST">
+        <input type="hidden" name="_subject" value="Broker Back-Office Kit waitlist signup">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://brokerbackofficenotes.github.io/?waitlist=thanks">
         <div>
           <label for="email">Work email</label>
           <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@yourbrokerage.com">
@@ -153,7 +151,7 @@ footer a{color:#fff}
         <input type="hidden" name="utm_source" id="utm_source">
         <input type="hidden" name="utm_campaign" id="utm_campaign">
         <button class="btn" type="submit">Join the waitlist</button>
-        <p class="privacy"><strong>Privacy:</strong> I only use your email to send updates about the Broker Back-Office Kit and occasional research questions. No selling or sharing your details. Unsubscribe any time, or ask me to delete your answers. Submitting opens your email app to send your answers to brokerbackoffice@mail.grokbot.com.</p>
+        <p class="privacy"><strong>Privacy:</strong> I only use your email to send updates about the Broker Back-Office Kit and occasional research questions. No selling or sharing your details. Unsubscribe any time, or ask me to delete your answers. Your answers go to brokerbackoffice@mail.grokbot.com via FormSubmit.</p>
       </form>
     </div>
   </div>
@@ -175,12 +173,22 @@ footer a{color:#fff}
 </footer>
 
 <script>
-  // Copy UTM tags from the URL into the hidden form fields.
+  // Copy UTM tags from the URL into the hidden form fields; show thanks after FormSubmit redirect.
   (function(){
     var p = new URLSearchParams(location.search);
     ["utm_source","utm_campaign"].forEach(function(k){
       var el = document.getElementById(k); if (el && p.get(k)) el.value = p.get(k);
     });
+    if (p.get("waitlist") === "thanks") {
+      var card = document.querySelector("#waitlist .card");
+      if (card) {
+        var note = document.createElement("p");
+        note.className = "disclaimer";
+        note.style.marginBottom = "18px";
+        note.innerHTML = "<strong>Thanks — you're on the waitlist.</strong> I'll email you when there's something to try.";
+        card.insertBefore(note, card.firstChild);
+      }
+    }
   })();
 </script>
 </body>
