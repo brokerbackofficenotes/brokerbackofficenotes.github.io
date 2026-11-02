@@ -53,6 +53,15 @@ input:focus,select:focus,textarea:focus{outline:3px solid rgba(244,123,32,.35);b
 footer{background:var(--navy);color:#C9D2E3;padding:32px 0;font-size:14px}
 footer a{color:#fff}
 @media (max-width:640px){.fields{columns:1}.btn.ghost{margin:10px 0 0}.hero{padding:40px 0 48px}}
+
+.kit-price{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px}
+.kit-price strong{font-size:40px;color:var(--navy);line-height:1}
+.kit-price span{color:var(--muted);font-size:15px}
+.kit-list{margin:0;padding-left:20px}
+.kit-list li{margin-bottom:6px}
+.kit-img{width:100%;height:auto;border-radius:12px;border:1px solid var(--line);margin:0 0 24px;display:block}
+.kit-faq summary{cursor:pointer;font-weight:600;color:var(--navy);padding:6px 0}
+.kit-faq p{margin:4px 0 12px;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -66,7 +75,7 @@ footer a{color:#fff}
     <h1>Write down how you vetted the carrier, <span>every load</span>.</h1>
     <p>A free, editable per-load carrier vetting record for small freight brokerages (1-10 people). One row per load: what you checked, when, where, who you spoke to, and who did the check.</p>
     <a class="btn" href="#template">Get the free template</a>
-    <a class="btn ghost" href="#waitlist">Join the Back-Office Kit waitlist</a>
+    <a class="btn ghost" href="#kit">Get the full kit ($39)</a>
   </div>
 </header>
 
@@ -105,11 +114,57 @@ footer a{color:#fff}
   </div>
 </section>
 
+
+<section id="kit">
+  <div class="wrap">
+    <span class="badge">NEW</span>
+    <h2>Get the full Broker Back-Office Kit</h2>
+    <p class="lead">The free record above covers one job. The full kit is the complete back-office set for a 1-10 person brokerage: a linked workbook with a dashboard, printable SOPs and checklists, 25 AI prompts and 12 email templates. One-time purchase, no subscription, no login, and you can edit everything. Unlike AI-writing kits that only draft notes, these are fill-in records so each tender leaves a dated trail (who you called, which number, what the agent confirmed).</p>
+    <img class="kit-img" src="kit-inside.png" alt="What's inside the Broker Back-Office Kit: workbook, checklists and SOPs, AI prompt pack, email templates" loading="lazy">
+    <div class="grid">
+      <div class="card">
+        <h3 style="margin-top:0;color:var(--navy)">Workbook (Excel / Google Sheets)</h3>
+        <ul class="kit-list">
+          <li>Dashboard: COIs expired or expiring, onboarding still open, loads missing POD, open claims</li>
+          <li>Carriers master list + onboarding tracker (% complete)</li>
+          <li>COI expiry tracker with days left and agent-confirmation fields</li>
+          <li>Double-brokering red-flag scorecard (you set the weights)</li>
+          <li>Per-load vetting record, load log, claims log</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;color:var(--navy)">Printables, prompts &amp; emails</h3>
+        <ul class="kit-list">
+          <li>13-page PDF: 5 SOPs, 4 checklists, a pickup verification form, a file-naming standard</li>
+          <li>Questions to bring to your attorney and insurance agent</li>
+          <li>25 copy-paste AI prompts with safety checks</li>
+          <li>12 emails: doc chase, COI renewal, agent verification, payment-change reply, POD request, claim notice</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0;color:var(--navy)">One-time price</h3>
+        <div class="kit-price"><strong>$39</strong><span>one brokerage, up to 10 users</span></div>
+        <a class="btn" href="https://chator2021.gumroad.com/l/broker-back-office-kit?utm_source=site&amp;utm_campaign=kit" rel="noopener">Get the full kit</a>
+        <p class="note" style="margin-top:12px">Secure checkout and instant download via Gumroad. Code WAITLIST10 takes $10 off through Nov 12. Not useful for you? Email within 14 days for a refund.</p>
+      </div>
+    </div>
+    <div class="kit-faq" style="margin-top:28px;max-width:760px">
+      <details><summary>Does it replace my TMS or carrier monitoring service?</summary>
+        <p>No. It works next to them and gives you one consistent record of what you checked, your COI and onboarding status, red-flag decisions and claims.</p></details>
+      <details><summary>Does it check carriers automatically?</summary>
+        <p>No. Nothing connects to FMCSA or any database. You look up the official sources; the kit helps you record what you found.</p></details>
+      <details><summary>Who made it?</summary>
+        <p>Broker Back-Office Notes, a workflow researcher, <strong>not a freight broker</strong>, law firm or insurance agency.</p></details>
+    </div>
+    <div class="disclaimer"><strong>Templates only. Not legal advice.</strong> The kit doesn't tell you which checks are required, and using it doesn't by itself make a vetting or claims process adequate. Check requirements with a qualified transportation attorney and your insurance agent.</div>
+  </div>
+</section>
+
 <section class="alt" id="waitlist">
   <div class="wrap">
-    <span class="badge">READY TO LIST</span>
-    <h2>Broker Back-Office Kit: waitlist</h2>
-    <p class="lead">The full kit files are ready (workbook, SOPs, AI prompts, email templates). Checkout is opening next on Gumroad at $39. Joining the waitlist means I'll email you the purchase link the same day it goes live, and your answers below shape what I build next.</p>
+    <span class="badge">UPDATES</span>
+    <h2>Get updates and new templates</h2>
+    <p class="lead">The Broker Back-Office Kit is live at $39 on Gumroad. Leave your email if you want new templates, research notes, and occasional questions that shape what I build next. Prefer to buy now: <a href="#kit">get the full kit</a>.</p>
 
     <div class="card" style="max-width:640px">
       <!-- FormSubmit endpoint (hash hides email). Activation email already sent to brokerbackoffice@mail.grokbot.com. -->
@@ -185,7 +240,7 @@ footer a{color:#fff}
         var note = document.createElement("p");
         note.className = "disclaimer";
         note.style.marginBottom = "18px";
-        note.innerHTML = "<strong>Thanks — you're on the waitlist.</strong> I'll email you the purchase link when checkout goes live.";
+        note.innerHTML = "<strong>Thanks — you're on the waitlist.</strong> You're on the updates list. The kit is live now — <a href="#kit">get it for $39</a>.";
         card.insertBefore(note, card.firstChild);
       }
     }
